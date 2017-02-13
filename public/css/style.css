@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 10px;
+}
+textarea {
+ font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+ height: 100%;
+ width: 100%;
+ outline: none;
+ border: none;
+}
+#input {
+ position: relative;
+ box-sizing: border-box;
+ padding: 20px;
+ height: 100%;
+ border: solid 1px #ddd;
+}
+div#wordcount {
+  color: gray;
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+  font-size: 10px;
+  margin-bottom: 3px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+div.markdown {
+  /* width: 80%; */
+  margin-left: 5px;
+  overflow-x: auto;
+  padding: 20px;
+  background-color: rgba(FFFC0,0.15);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.flex-container {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: stretch;
+    }
+
+.flex-item {
+    height: 100%;
+    flex: 1 0 auto;
+    align-self: auto;
+    flex-basis: 50%;
+    }
+

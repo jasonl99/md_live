@@ -1,0 +1,18 @@
+name: md_live
+version: 0.1.0
+
+authors:
+  - Jason Landry <jasonl99@gmail.com>
+
+dependencies:
+  lattice-core:
+    #github: jasonl99/lattice-core
+    path: /home/jason/crystal/lattice-core
+
+targets:
+  md_live:
+    main: src/md_live.cr
+
+crystal: 0.20.5
+
+license: MIT
