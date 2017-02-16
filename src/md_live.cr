@@ -13,16 +13,18 @@ module MdLive
     unless context.session.int?("object_count")
       context.session.int("object_count",0)
     end
-    markdown = MarkdownEditor.find_or_create(editor)
-    markdown.content session_id: context.session.id
+    javascript = MarkdownEditor.javascript(session_id: context.session.id, target: nil)
+    markdown = MarkdownEditor.find_or_create(context.session.id)
+    render "./src/md_live/page.slang"
   end
 
   get "/" do |context|
     unless context.session.int?("object_count")
       context.session.int("object_count",0)
     end
+    javascript = MarkdownEditor.javascript(session_id: context.session.id, target: nil)
     markdown = MarkdownEditor.find_or_create(context.session.id)
-    markdown.content session_id: context.session.id
+    render "./src/md_live/page.slang"
   end
 
   Kemal.run

@@ -3,8 +3,12 @@ module MdLive
   class MarkdownEditor < Lattice::Connected::WebObject
     @text = ""
 
-    def content(session_id : String )
-      javascript = self.class.javascript(session_id, self)
+    def after_initialize
+      add_element_class "flex-container"
+      @element_options["id"] = "markdown"
+    end
+
+    def content
       render "./src/md_live/markdown.slang"
     end
     
@@ -14,11 +18,11 @@ module MdLive
 
     def on_event( event, speaker )
       if speaker == self && event.event_type = "subscriber"
-        if event.dom_item == "#{dom_id}-textarea" && event.message_value("action") == "input"
+        if event.dom_item == dom_id("textarea") && event.message_value("action") == "input"
           @text = event.message_value("params,value").as(String)
-          value({"id"=>"#{dom_id}-textarea", "value"=>@text}, @subscribers - [event.socket.as(HTTP::WebSocket)])
-          update({"id"=>"#{dom_id}-wordcount","value"=>"Characters: #{@text.size} Wordcount: #{@text.split(" ").size}"})
-          update({"id"=>"#{dom_id}-markdown","value"=>markdown})
+          value({"id"=>dom_id("textarea"), "value"=>@text}, @subscribers - [event.socket.as(HTTP::WebSocket)])
+          update({"id"=>dom_id("wordcount"),"value"=>"Characters: #{@text.size} Wordcount: #{@text.split(" ").size}"})
+          update({"id"=>dom_id("markdown"),"value"=>markdown})
         end
       end
     end

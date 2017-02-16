@@ -6,19 +6,19 @@ shards:
 
   kemal:
     github: kemalcr/kemal
-    version: 0.17.5
+    version: 0.18.0
 
   kemal-session:
     github: kemalcr/kemal-session
-    commit: 9c6a473fa5680c82487edcdfc3258d6fc6f74b60
+    commit: 622dee645acff2b03a90754971bf9713d3495b3d
 
   kilt:
     github: jeromegn/kilt
     version: 0.3.3
 
   lattice-core:
-    path: /home/jason/crystal/lattice-core
-    version: 0.11.0
+    github: jasonl99/lattice-core
+    commit: 004fa0c4ca441af538205bf859dcf1b1b7546912
 
   multipart:
     github: RX14/multipart.cr

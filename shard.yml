@@ -6,8 +6,9 @@ authors:
 
 dependencies:
   lattice-core:
-    #github: jasonl99/lattice-core
-    path: /home/jason/crystal/lattice-core
+    github: jasonl99/lattice-core
+    branch: cleaner_dom
+    #path: /home/jason/crystal/lattice-core
 
 targets:
   md_live:
