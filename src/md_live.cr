@@ -3,6 +3,8 @@ require "./md_live/*"
 
 module MdLive
 
+  serve_static({"gzip" => false, "dir_listing" => false})
+
   Session.config do |config|
     Session.config.secret = "foo bar"
   end
@@ -27,5 +29,5 @@ module MdLive
     render "./src/md_live/page.slang"
   end
 
-  Kemal.run
+  Lattice::Core::Application.run
 end
