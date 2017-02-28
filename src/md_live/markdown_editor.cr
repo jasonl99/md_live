@@ -16,15 +16,13 @@ module MdLive
       Markdown.to_html(@text)
     end
 
-    def on_event( event, speaker )
-      if speaker == self && event.event_type = "subscriber"
-        if event.dom_item == dom_id("textarea") && event.message_value("action") == "input"
-          typist_socket = event.user.as(Lattice::BasicUser).socket.as(HTTP::WebSocket)
-          @text = event.message_value("params,value").as(String)
-          value({"id"=>dom_id("textarea"), "value"=>@text}, @subscribers - [typist_socket])
-          update({"id"=>dom_id("wordcount"),"value"=>"Characters: #{@text.size} Wordcount: #{@text.split(" ").size}"})
-          update({"id"=>dom_id("markdown"),"value"=>markdown})
-        end
+    def on_event( event )
+      if event.component == "textarea" && event.action == "input"
+        @text = event.params["value"].as(String)
+        typist_socket = event.user.socket.as(HTTP::WebSocket)
+        value({"id"=>dom_id("textarea"), "value"=>@text}, @subscribers - [typist_socket])
+        update({"id"=>dom_id("wordcount"),"value"=>"Characters: #{@text.size} Wordcount: #{@text.split(" ").size}"})
+        update({"id"=>dom_id("markdown"),"value"=>markdown})
       end
     end
 
