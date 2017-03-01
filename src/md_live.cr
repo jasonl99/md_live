@@ -15,7 +15,7 @@ module MdLive
     unless context.session.int?("object_count")
       context.session.int("object_count",0)
     end
-    markdown = MarkdownEditor.find_or_create(context.session.id)
+    markdown = MarkdownEditor.find_or_create(editor)
     render "./src/md_live/page.slang"
   end
 
